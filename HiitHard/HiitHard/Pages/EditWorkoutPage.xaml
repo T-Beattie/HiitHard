@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HiitHard.Pages.EditWorkoutPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label x:Name="nameLabel" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" FontSize="Large"/>
+            <Label x:Name="typeLabel" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" FontSize="Caption" />
+            <ScrollView>
+                <StackLayout x:Name="exerciseStack">
+                    <Button Text="+" CornerRadius="20" Clicked="Button_Clicked"/>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+             x:Class="HiitHard.PopupPages.AddWorkoutPopUpPage">
+    <!--You can set an animation in the xaml file or in the csharp code behind-->
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation 
+            PositionIn="Center"
+            PositionOut="Center"
+            ScaleIn="1.2"
+            ScaleOut="0.8"
+            DurationIn="400"
+            DurationOut="300"
+            EasingIn="SinOut"
+            EasingOut="SinIn"
+            HasBackgroundAnimation="True"/>
+    </pages:PopupPage.Animation>
+    <!--You can use any elements here which are extended from Xamarin.Forms.View-->
+    <StackLayout 
+        VerticalOptions="CenterAndExpand" 
+        HorizontalOptions="CenterAndExpand" 
+        Padding="10, 10, 10, 10">
+        <Frame BackgroundColor="#252525" CornerRadius="0" MinimumWidthRequest="1000" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <StackLayout>
+                <Label Text="New Workout" FontFamily="Montserrat" FontSize="40" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" TextColor="White"/>
+                <BoxView HeightRequest="4" WidthRequest="300" Color="#B69213" HorizontalOptions="Center"/>
+                <BoxView HeightRequest="20"/>
+                
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Name" FontFamily="Montserrat" FontSize="Caption" HorizontalOptions="StartAndExpand" TextColor="White" MinimumWidthRequest="700" VerticalOptions="CenterAndExpand" VerticalTextAlignment="Center"/>
+                    <Entry x:Name="workoutName" Keyboard="Text" FontFamily="Montserrat" FontSize="20" HorizontalOptions="CenterAndExpand" TextColor="White" MinimumWidthRequest="700" Placeholder="Enter Name..."/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Type" FontFamily="Montserrat" FontSize="Caption" HorizontalOptions="StartAndExpand" TextColor="White" MinimumWidthRequest="700" VerticalOptions="CenterAndExpand" VerticalTextAlignment="Center"/>
+                    <Entry x:Name="workoutType" Keyboard="Text" FontFamily="Montserrat" FontSize="20" HorizontalOptions="CenterAndExpand" TextColor="White" MinimumWidthRequest="700" Placeholder="Enter type..."/>
+                </StackLayout>
+                
+                <BoxView HeightRequest="20"/>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Rest Interval Between Circuits" FontFamily="Montserrat" FontSize="Caption" HorizontalOptions="StartAndExpand" TextColor="White" MinimumWidthRequest="700" VerticalOptions="CenterAndExpand" VerticalTextAlignment="Center"/>
+                    <Entry x:Name="circuitRestInterval" Keyboard="Numeric" FontFamily="Montserrat" FontSize="20" HorizontalOptions="CenterAndExpand" TextColor="White" MinimumWidthRequest="700" Placeholder="" WidthRequest="50"/>
+                </StackLayout>
+
+                <BoxView HeightRequest="10"/>
+                <Label Text="Circuits" FontFamily="Montserrat" FontSize="Caption" HorizontalOptions="CenterAndExpand" TextColor="#B69213" MinimumWidthRequest="500"/>
+                <ScrollView BackgroundColor="#1F1F1F" VerticalOptions="StartAndExpand">
+                    <StackLayout x:Name="AddCircuitStack" VerticalOptions="StartAndExpand" Spacing="5">
+                        <Button x:Name="AddCircuit" Text="+" WidthRequest="50" FontFamily="Montserrat" FontSize="14" TextColor="White" Clicked="AddCircuit_Clicked" HorizontalOptions="Center" CornerRadius="25" BackgroundColor="#B69213"/>
+                    </StackLayout>
+                </ScrollView>
+                <BoxView HeightRequest="20"/>
+                <Button x:Name="addWorkoutButton" FontFamily="Montserrat" Text="Add Workout" BackgroundColor="#B69213" Clicked="addWorkoutButton_Clicked" WidthRequest="200" VerticalOptions="EndAndExpand" HorizontalOptions="Center"/>
+            </StackLayout>
+        </Frame>
+        
+    </StackLayout>
+</pages:PopupPage>

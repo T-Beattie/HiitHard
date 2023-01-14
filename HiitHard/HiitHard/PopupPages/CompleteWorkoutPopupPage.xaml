@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HiitHard.PopupPages.CompleteWorkoutPopupPage"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+                 BackgroundColor="#E1000000"
+                 CloseWhenBackgroundIsClicked="False">
+    <!--You can set an animation in the xaml file or in the csharp code behind-->
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation 
+            PositionIn="Center"
+            PositionOut="Center"
+            ScaleIn="1.2"
+            ScaleOut="0.8"
+            DurationIn="400"
+            DurationOut="300"
+            EasingIn="SinOut"
+            EasingOut="SinIn"
+            HasBackgroundAnimation="True"/>
+    </pages:PopupPage.Animation>
+    <!--You can use any elements here which are extended from Xamarin.Forms.View-->
+    
+    <StackLayout 
+        VerticalOptions="CenterAndExpand" 
+        HorizontalOptions="CenterAndExpand" 
+        Padding="10, 10, 10, 10">
+        <StackLayout Margin="0" Spacing="0">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <BoxView Color="#B69213" HeightRequest="2" WidthRequest="70" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <Label Text="WORKOUT" FontFamily="Montserrat" TextColor="white" HorizontalTextAlignment="Center" HorizontalOptions="Center" FontSize="22"/>
+                <BoxView Color="#B69213" HeightRequest="2" WidthRequest="70" HorizontalOptions="Center" VerticalOptions="Center"/>
+            </StackLayout>
+            <Label Text="COMPLETE" FontFamily="Montserrat" TextColor="#B69213" HorizontalTextAlignment="Center" HorizontalOptions="Center" FontSize="48" TranslationY="-20"/>
+        </StackLayout>
+        <BoxView HeightRequest="50" VerticalOptions="Center"/>
+        <Label Text="" x:Name="quoteLabel" FontFamily="Montserrat" TextColor="white" HorizontalTextAlignment="Center" HorizontalOptions="Center" FontSize="12" WidthRequest="500"/>
+        <Label Text="" x:Name="authorLabel" FontFamily="Montserrat" TextColor="#B69213" HorizontalTextAlignment="Center" HorizontalOptions="Center" FontSize="12"/>
+        <BoxView HeightRequest="50" VerticalOptions="Center"/>
+        <Button x:Name="endWorkoutButton" FontFamily="Montserrat" Text="End Workout" BackgroundColor="#B69213" Clicked="endWorkoutButton_Clicked" WidthRequest="200" VerticalOptions="EndAndExpand" HorizontalOptions="Center"/>
+    </StackLayout>
+</pages:PopupPage>

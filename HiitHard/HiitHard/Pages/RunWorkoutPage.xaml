@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HiitHard.Pages.RunWorkoutPage"
+             xmlns:control="clr-namespace:ProgressRingControl.Forms.Plugin;assembly=ProgressRing.Forms.Plugin"
+             BackgroundColor="#252525">
+    <ContentPage.Content>
+        <Grid >
+            <Image Aspect="AspectFill" x:Name="backgroundImage" />
+            <Image Aspect="AspectFill" Source="background.png" />
+            <!-- Place here the rest of the layout for the page. -->
+            <StackLayout>
+                <Label x:Name="workoutLabel" TextColor="White" FontSize="32" FontFamily="Montserrat" HorizontalOptions="Center" VerticalOptions="Center" Text="Workout"/>
+                <BoxView HeightRequest="4" WidthRequest="300" Color="#B69213" HorizontalOptions="Center"/>
+
+                <Label Text="Current Exercise" TextColor="White" FontSize="14" FontFamily="Montserrat" HorizontalOptions="Center"  HeightRequest="30" VerticalTextAlignment="End"/>
+                <Label x:Name="exerciseName" TextColor="#B69213" FontSize="32" FontFamily="Montserrat" HorizontalOptions="Center"  VerticalTextAlignment="Start" TranslationY="-15"/>
+                <StackLayout Orientation="Horizontal">
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center" TranslationX="30">
+                        <Label Text="Circuit" FontSize="14" TextColor="White" FontFamily="Montserrat" HorizontalOptions="Center" VerticalOptions="Center" />
+                        <Label Text="" x:Name="circuit_count_label" FontSize="20" TextColor="#B69213" FontFamily="Montserrat" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </StackLayout>
+                    
+                    <Grid WidthRequest="200" HeightRequest="200" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" >
+                        <Image Aspect="AspectFill" Source="timerBackground.png" />
+                        <control:ProgressRing  Grid.Column="0" Grid.Row="0" Progress="1.0" ScaleY="-1" Rotation="180" RingThickness="5" RingBaseColor="Transparent"  RingProgressColor="#B69213"  x:Name="exercise_progress_ring"></control:ProgressRing>
+                        <Label Grid.Column="0" Grid.Row="0" FontFamily="Montserrat" TextColor="White" FontSize="Header" Text="20" HorizontalOptions="Center" VerticalOptions="Center" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" x:Name="timeCounter" MinimumWidthRequest="75"></Label>
+                        <Button Grid.Column="0" Grid.Row="0" x:Name="startpauseButton"  BackgroundColor="Transparent" Clicked="startpauseButton_Clicked" HeightRequest="30" Scale="1" WidthRequest="150" HorizontalOptions="Center"/>
+                    </Grid>
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="Start" TranslationX="-30">
+                        <Label Text="Exercise" FontSize="14" TextColor="White" FontFamily="Montserrat" HorizontalOptions="Center" VerticalOptions="Center" />
+                        <Label Text="" x:Name="exercise_count_label" FontSize="20" TextColor="#B69213" FontFamily="Montserrat" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </StackLayout>
+                </StackLayout>
+                
+                <BoxView HeightRequest="2" WidthRequest="300"  HorizontalOptions="Center"/>
+                <BoxView HeightRequest="2" WidthRequest="300" Color="#1F1F1F" HorizontalOptions="Center"/>
+                <StackLayout>
+                    <Label Text="Next Exercise" TextColor="White" FontSize="14" FontFamily="Montserrat" HorizontalOptions="Center"/>
+                    <Label x:Name="nextExerciseLabel" TextColor="#B69213" FontSize="24" FontFamily="Montserrat" HorizontalOptions="Center" TranslationY="-10"/>
+                </StackLayout>
+                <BoxView HeightRequest="2" WidthRequest="300" Color="#1F1F1F" HorizontalOptions="Center" TranslationY="-10"/>
+                
+                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Margin="0">
+                    <Image Source="headphones.png"  HorizontalOptions="Center" HeightRequest="20"/>
+                    <Label x:Name="spotify_current_song" TextColor="White" FontSize="14" FontFamily="Montserrat" HorizontalOptions="Center" />
+                    <Label x:Name="spotify_current_artist" TextColor="#B69213" FontSize="14" FontFamily="Montserrat" HorizontalOptions="Center" />
+                </StackLayout>
+                
+                <StackLayout Orientation="Horizontal"  HorizontalOptions="CenterAndExpand" Margin="0">
+                    <Label Text="Current Playlist" TextColor="White" FontSize="12" FontFamily="Montserrat" HorizontalOptions="Center"  HeightRequest="30"/>
+                    <Label x:Name="spotify_current_playlist" TextColor="#B69213" FontSize="12" FontFamily="Montserrat" HorizontalOptions="Center"  HeightRequest="30"/>
+                </StackLayout>
+
+                
+                
+
+                <Label Text="Spotify Playlists" TextColor="#59EC8E" FontSize="18" FontFamily="Montserrat" HorizontalOptions="Center" VerticalOptions="End" VerticalTextAlignment="End"/>
+                <Frame BackgroundColor="#59EC8E">
+                    <StackLayout Orientation="Vertical" Margin="0" Spacing="0">
+                        <Frame BackgroundColor="#3DA964" Margin="0" Padding="10" ScaleX="1.1">
+                            <ScrollView Orientation="Horizontal" Margin="0" BackgroundColor="#3DA964">
+                                <StackLayout Orientation="Horizontal" x:Name="playlists_stack" Margin="0" >
+                                </StackLayout>
+                            </ScrollView>
+                        </Frame>
+                        <BoxView HeightRequest="30"/>
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Margin="0">
+                            <Button  x:Name="previousTrackButton" ImageSource="nexttrack.png" BackgroundColor="Transparent" Clicked="previousTrackButton_Clicked" HeightRequest="50" Scale="0.8" RotationY="180"  WidthRequest="80" HorizontalOptions="Center"/>
+                            <Button  x:Name="playTrackButton" ImageSource="play.png" BackgroundColor="Transparent" Clicked="playTrackButton_Clicked" HeightRequest="50" Scale="1" WidthRequest="80" HorizontalOptions="Center"/>
+                            <Button  x:Name="nextTrackButton" ImageSource="nexttrack.png" BackgroundColor="Transparent" Clicked="nextTrackButton_Clicked" HeightRequest="50" Scale="0.8" WidthRequest="80" HorizontalOptions="Center"/>
+                        </StackLayout>
+                    </StackLayout>                    
+                </Frame>
+            </StackLayout>
+        </Grid >       
+
+    </ContentPage.Content>
+</ContentPage>
