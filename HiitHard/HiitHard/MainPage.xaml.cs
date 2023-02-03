@@ -16,14 +16,12 @@ namespace HiitHard
     public partial class MainPage : ContentPage
     {
         WorkoutManager workoutManager = WorkoutManager.Instance();
-        SpotifyManager spotifyManager = SpotifyManager.Instance();
         public MainPage()
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
             workoutManager.LoadStash();
             Console.WriteLine("Id: " + CrossDeviceInfo.Current.Id);
-
 
             for (int i = 0; i < workoutManager.workoutStash.Count; i++)
             {

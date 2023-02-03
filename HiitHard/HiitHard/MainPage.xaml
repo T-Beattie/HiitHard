@@ -15,7 +15,7 @@
             <BoxView HeightRequest="4" WidthRequest="300" Color="#B69213" HorizontalOptions="Center"/>
             <BoxView HeightRequest="50" WidthRequest="300"  HorizontalOptions="Center" />
             <ScrollView BackgroundColor="#1B1B1B" Margin="20,0,20,0">
-                <StackLayout x:Name="WorkoutStack" Orientation="Vertical" BackgroundColor="#1B1B1B">
+                <StackLayout x:Name="WorkoutStack" Orientation="Vertical" BackgroundColor="#1B1B1B" Padding="0" Margin="0,20,0,0">
 
                 </StackLayout>
             </ScrollView>

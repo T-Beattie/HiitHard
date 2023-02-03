@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HiitHard.Navigation.NavigationDetail"
+             xmlns:plugin="clr-namespace:Xamarin.Plugin.Calendar.Controls;assembly=Xamarin.Plugin.Calendar" 
+             xmlns:controls="clr-namespace:HiitHard.Controls"
+             Title="Landing Page"
+             BackgroundColor="#252525">
+    
+    
+    <StackLayout Padding="0">
+        <StackLayout Orientation="Horizontal" BackgroundColor="Transparent" VerticalOptions="Start" Padding="10">
+            <StackLayout  Margin="20,0,20,0">
+                <Label Text="Welcome Back," TextColor="White" FontSize="28" FontFamily="Montserrat" HorizontalOptions="Start"  HeightRequest="30" VerticalTextAlignment="End"/>
+                <Label Text="Tom" x:Name="username_label" TextColor="White" FontSize="28" FontFamily="Montserrat" HorizontalOptions="Start"  HeightRequest="30" VerticalTextAlignment="End"/>
+            </StackLayout>
+            <Image Source="HH_LOGO.png" HeightRequest="80" HorizontalOptions="EndAndExpand" TranslationX="-20"/>
+        </StackLayout>
+
+        <BoxView Color="#B69213" HeightRequest="2" HorizontalOptions="Center" WidthRequest="340"/>
+        <BoxView Color="Transparent" HeightRequest="5" HorizontalOptions="Center" WidthRequest="340"/>
+        <Label x:Name="quote_body_label" Text="Never give up on a dream just because of the time it will take to accomplish it. The time will pass anyway." TextColor="White" FontSize="12" FontFamily="Montserrat" HorizontalOptions="Center" HorizontalTextAlignment="Center" WidthRequest="270" VerticalTextAlignment="End"/>
+        <Label x:Name="quote_author_label" Text="-Earl Nightingale" TextColor="#B69213" FontSize="12" FontFamily="Montserrat" HorizontalOptions="Center" HorizontalTextAlignment="Center" WidthRequest="270" VerticalTextAlignment="End"/>
+        <BoxView Color="Transparent" HeightRequest="5" HorizontalOptions="Center" WidthRequest="340"/>
+        <BoxView Color="#B69213" HeightRequest="2" HorizontalOptions="Center" WidthRequest="340"/>
+
+        <Frame Margin="0,-60,0,-60" BackgroundColor="Transparent" >
+            <plugin:Calendar x:Name="calendar_tracker" Scale="0.75" FooterSectionVisible="False" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" MonthLabelColor="#B69213" ArrowsColor="#B69213" YearLabelColor="White" SelectedDayBackgroundColor="#B69213" TodayOutlineColor="#B69213">
+                <plugin:Calendar.HeaderSectionTemplate>
+                    <controls:CalendarHeader />
+                </plugin:Calendar.HeaderSectionTemplate>
+                
+                <plugin:Calendar.FooterSectionTemplate>
+                    <controls:CalendarFooter />
+                </plugin:Calendar.FooterSectionTemplate>
+            </plugin:Calendar>
+        </Frame>
+       
+
+        <BoxView Color="Transparent" HeightRequest="5" HorizontalOptions="Center" WidthRequest="340"/>
+        <BoxView Color="#B69213" HeightRequest="2" HorizontalOptions="Center" WidthRequest="340"/>
+        <BoxView Color="Transparent" HeightRequest="3" HorizontalOptions="Center" WidthRequest="340"/>
+        
+        <Label Text="Stats" TextColor="White" FontSize="20" FontFamily="Montserrat" HorizontalOptions="Center"  HeightRequest="30" VerticalTextAlignment="End"/>
+        
+        <StackLayout x:Name="stats_stack" BackgroundColor="Aquamarine" Margin="35,0,35,0" >
+            <Label Text="Stats" TextColor="White" FontSize="20" FontFamily="Montserrat" HorizontalOptions="StartAndExpand"  HeightRequest="30" VerticalTextAlignment="End"/>
+            <Label Text="Stats" TextColor="#B69213" FontSize="20" FontFamily="Montserrat" HorizontalOptions="EndAndExpand"  HeightRequest="30" VerticalTextAlignment="End"/>
+        </StackLayout>
+
+    </StackLayout>
+    
+</ContentPage>

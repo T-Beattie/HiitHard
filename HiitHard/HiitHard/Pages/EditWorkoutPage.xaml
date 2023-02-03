@@ -4,11 +4,12 @@
              x:Class="HiitHard.Pages.EditWorkoutPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label x:Name="nameLabel" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" FontSize="Large"/>
-            <Label x:Name="typeLabel" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" FontSize="Caption" />
+            <Label x:Name="nameLabel" TextColor="White" FontSize="32" FontFamily="Montserrat" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <BoxView HeightRequest="4" WidthRequest="300" Color="#B69213" HorizontalOptions="Center"/>
+            <Label x:Name="typeLabel" TextColor="White" FontSize="14" FontFamily="Montserrat" HorizontalOptions="Center"  HeightRequest="30" VerticalTextAlignment="End"/>
             <ScrollView>
-                <StackLayout x:Name="exerciseStack">
-                    <Button Text="+" CornerRadius="20" Clicked="Button_Clicked"/>
+                <StackLayout x:Name="circuitStack">
+
                 </StackLayout>
             </ScrollView>
         </StackLayout>

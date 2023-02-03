@@ -10,6 +10,8 @@ using Android.Content;
 using Android.Media;
 using Xamarin.Forms;
 using MediaManager;
+using Android.Bluetooth;
+using Plugin.CurrentActivity;
 
 namespace HiitHard.Droid
 {
@@ -19,17 +21,15 @@ namespace HiitHard.Droid
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            Window.SetStatusBarColor(Android.Graphics.Color.Rgb(37, 37, 37));
-
+            CrossCurrentActivity.Current.Init(this, savedInstanceState);
+            Window.SetStatusBarColor(Android.Graphics.Color.Rgb(182, 146, 19));
             Rg.Plugins.Popup.Popup.Init(this);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             AdvancedTimer.Forms.Plugin.Droid.AdvancedTimerImplementation.Init();
             LoadApplication(new App());
 
-            var am = (AudioManager)this.GetSystemService(AudioService);
-            var componentName = new ComponentName(PackageName, new MyMediaButtonBroadcastReceiver().ComponentName);
-            am.RegisterMediaButtonEventReceiver(componentName);
+
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
@@ -37,35 +37,7 @@ namespace HiitHard.Droid
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
-
-        public override bool DispatchKeyEvent(Android.Views.KeyEvent e)
-        {
-            Console.WriteLine(e.KeyCode.ToString());
-            return base.DispatchKeyEvent(e);
-        }
-
     }
 
-    [BroadcastReceiver]
-    [IntentFilter(new[] { Intent.ActionMediaButton })]
-    public class MyMediaButtonBroadcastReceiver
-    : BroadcastReceiver
-    {
-        public string ComponentName { get { return Class.Name; } }
 
-        public override void OnReceive(Context context, Intent intent)
-        {
-            Console.WriteLine(intent.Action);
-            if (intent.Action != Intent.ActionMediaButton)
-                return;
-
-            var evt = (KeyEvent)intent.GetParcelableExtra(Intent.ExtraKeyEvent);
-            if (evt == null)
-                return;
-
-            //Console.WriteLine(evt.KeyCode);
-
-            MessagingCenter.Send(Xamarin.Forms.Application.Current, "Notification");
-        }
-    }
 }

@@ -36,12 +36,14 @@
                     <Entry x:Name="repeatEntry" FontFamily="Montserrat" Keyboard="Numeric" TextColor="White" WidthRequest="40" Completed="repeatEntry_Completed" HorizontalOptions="CenterAndExpand"/>                    
                 </StackLayout>
                 <Label Text="Exercises" FontFamily="Montserrat" FontSize="Caption" HorizontalOptions="CenterAndExpand" TextColor="#B69213" MinimumWidthRequest="500"/>
+                
                 <ScrollView BackgroundColor="#1F1F1F" VerticalOptions="StartAndExpand">
                     <StackLayout x:Name="AddExerciseStack">
-                        <Button x:Name="AddExercise" Text="+" WidthRequest="50" FontFamily="Montserrat" FontSize="14" TextColor="White" Clicked="AddExercise_Clicked" HorizontalOptions="Center" CornerRadius="25" BackgroundColor="#B69213"/>
+                        
                     </StackLayout>
                 </ScrollView>
-                <BoxView HeightRequest="20"/>
+                <Button x:Name="AddExercise" Text="+" WidthRequest="50" FontFamily="Montserrat" FontSize="14" TextColor="White" Clicked="AddExercise_Clicked" HorizontalOptions="Center" CornerRadius="25" BackgroundColor="#B69213"/>
+                <BoxView HeightRequest="40"/>
                 <Button x:Name="addCircuitButton"  FontFamily="Montserrat" Text="Add Circuit" Clicked="addCircuitButton_Clicked" BackgroundColor="#B69213" WidthRequest="200" VerticalOptions="EndAndExpand" HorizontalOptions="Center"/>
             </StackLayout>
         </Frame>

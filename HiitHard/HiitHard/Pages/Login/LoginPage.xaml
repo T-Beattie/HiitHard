@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:objects="clr-namespace:HiitHard.Objects"
+             x:Class="HiitHard.Pages.Login.LoginPage"
+             BackgroundColor="#252525">
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <Image Source="LoginBackground.png"  
+                   Aspect="AspectFill"
+                   AbsoluteLayout.LayoutBounds="0,0,1,1"                   
+                   AbsoluteLayout.LayoutFlags="SizeProportional"/>
+            
+            <Image Source="HH_LOGO.png"
+                   AbsoluteLayout.LayoutBounds="0.5,0.1,500,250"
+                   AbsoluteLayout.LayoutFlags="PositionProportional"/>
+
+            <Frame IsVisible="True" x:Name="MainFrame" AbsoluteLayout.LayoutBounds="0.5,0.6,500,250" AbsoluteLayout.LayoutFlags="PositionProportional" BackgroundColor="Transparent">
+                <AbsoluteLayout>
+                    <Button x:Name="main_sign_in_btn"
+                    BackgroundColor="#B69213"
+                    CornerRadius="0"
+                    Text="Sign In"
+                    FontSize="14"
+                    FontFamily="Montserrat"
+                    Clicked="main_sign_in_btn_Clicked"
+                    AbsoluteLayout.LayoutBounds="0.5,0.75,250,40"
+                    AbsoluteLayout.LayoutFlags="PositionProportional"/>
+
+                    <Button x:Name="register_btn"
+                    BackgroundColor="Transparent"
+                    CornerRadius="0"
+                    Text="Register"
+                    FontSize="8"
+                    FontFamily="Montserrat"
+                    Clicked="register_btn_Clicked"
+                    AbsoluteLayout.LayoutBounds="0.5,0.99,250,40"
+                    AbsoluteLayout.LayoutFlags="PositionProportional"/>
+                </AbsoluteLayout>                
+            </Frame>
+
+            <Frame IsVisible="False" x:Name="RegisterFrame" AbsoluteLayout.LayoutBounds="0.5,0.6,500,250" AbsoluteLayout.LayoutFlags="PositionProportional" BackgroundColor="Transparent">
+                <AbsoluteLayout>
+                    <Button x:Name="register_back_btn"
+                    BackgroundColor="Transparent"
+                    CornerRadius="0"
+                    Text="ᐊ Back"
+                    TextColor="#B69213"
+                    FontSize="12"
+                    FontFamily="Montserrat"
+                    Clicked="back_btn_Clicked"
+                    AbsoluteLayout.LayoutBounds="0.5,-0.05,250,40"
+                    AbsoluteLayout.LayoutFlags="PositionProportional"/>
+                    
+                    <objects:HHEntry Placeholder="Email"
+                       x:Name="register_username_entry"
+                       Keyboard="Email"
+                       FontSize="14"
+                       TextColor="White"
+                       FontFamily="Montserrat"
+                       AbsoluteLayout.LayoutBounds="0.5,0.2,250,40"
+                       AbsoluteLayout.LayoutFlags="PositionProportional"/>
+
+                    <objects:HHEntry Placeholder="Password"
+                       x:Name="register_password_entry"
+                       IsPassword="True"
+                       FontSize="14"
+                       TextColor="White"
+                       FontFamily="Montserrat"
+                       AbsoluteLayout.LayoutBounds="0.5,0.47,250,40"
+                       AbsoluteLayout.LayoutFlags="PositionProportional"/>
+
+                    <objects:HHEntry Placeholder="Confirm Password"
+                       x:Name="register_reenter_password_entry"
+                       IsPassword="True"
+                       FontSize="14"
+                       TextColor="White"
+                       FontFamily="Montserrat"
+                       AbsoluteLayout.LayoutBounds="0.5,0.75,250,40"
+                       AbsoluteLayout.LayoutFlags="PositionProportional"/>
+
+                    <Button x:Name="register_register_btn"
+                    BackgroundColor="#B69213"
+                    CornerRadius="0"
+                    Text="Register"
+                    FontSize="14"
+                    FontFamily="Montserrat"
+                    Clicked="register_register_btn_Clicked"
+                    AbsoluteLayout.LayoutBounds="0.5,1.1,250,40"
+                    AbsoluteLayout.LayoutFlags="PositionProportional"/>
+
+                </AbsoluteLayout>                
+            </Frame>
+
+            <Frame IsVisible="False" x:Name="LoginFrame" AbsoluteLayout.LayoutBounds="0.5,0.6,500,250" AbsoluteLayout.LayoutFlags="PositionProportional" BackgroundColor="Transparent">
+
+                <AbsoluteLayout>
+
+                    <Button x:Name="back_btn"
+                    BackgroundColor="Transparent"
+                    CornerRadius="0"
+                    Text="ᐊ Back"
+                    TextColor="#B69213"
+                    FontSize="12"
+                    FontFamily="Montserrat"
+                    Clicked="back_btn_Clicked"
+                    AbsoluteLayout.LayoutBounds="0.5,-0.05,250,40"
+                    AbsoluteLayout.LayoutFlags="PositionProportional"/>
+                    
+                    <objects:HHEntry Placeholder="Email"
+                   x:Name="username_entry"
+                   Keyboard="Email"
+                   FontSize="14"
+                   TextColor="White"
+                   FontFamily="Montserrat"
+                   AbsoluteLayout.LayoutBounds="0.5,0.2,250,40"
+                   AbsoluteLayout.LayoutFlags="PositionProportional"/>
+
+                    <objects:HHEntry Placeholder="Password"
+                   x:Name="password_entry"
+                   IsPassword="True"
+                   FontSize="14"
+                   TextColor="White"
+                   FontFamily="Montserrat"
+                   AbsoluteLayout.LayoutBounds="0.5,0.47,250,40"
+                   AbsoluteLayout.LayoutFlags="PositionProportional"/>
+
+                    <Button x:Name="sign_in_btn"
+                    BackgroundColor="#B69213"
+                    CornerRadius="0"
+                    Text="Sign In"
+                    FontSize="14"
+                    FontFamily="Montserrat"
+                    AbsoluteLayout.LayoutBounds="0.5,0.8,250,40"
+                    AbsoluteLayout.LayoutFlags="PositionProportional"
+                    Clicked="sign_in_btn_Clicked"/>
+
+                    <Button x:Name="forgot_password_btn"
+                    BackgroundColor="Transparent"
+                    CornerRadius="0"
+                    Text="Forgot Password?"
+                    FontSize="8"
+                    FontFamily="Montserrat"
+                    AbsoluteLayout.LayoutBounds="0.5,0.99,250,40"
+                    AbsoluteLayout.LayoutFlags="PositionProportional"/>
+                </AbsoluteLayout>              
+                
+            </Frame>
+            
+
+            <Label
+                Text="OR"
+                TextColor="#B69213"
+                FontSize="14"
+                FontFamily="Montserrat"
+                HorizontalTextAlignment="Center"
+                AbsoluteLayout.LayoutBounds="0.5,0.78,250,40"
+                AbsoluteLayout.LayoutFlags="PositionProportional"/>
+
+            <BoxView Color="#B69213"
+                AbsoluteLayout.LayoutBounds="0.42,0.756,20,1"
+                AbsoluteLayout.LayoutFlags="PositionProportional"/>
+            <BoxView Color="#B69213"
+                AbsoluteLayout.LayoutBounds="0.58,0.756,20,1"
+                AbsoluteLayout.LayoutFlags="PositionProportional"/>
+            
+            
+
+            <Frame BackgroundColor="Transparent"
+                   BorderColor="#B69213"
+                   HasShadow="False"
+                   AbsoluteLayout.LayoutBounds="0.5,0.9215,250,90"
+                   AbsoluteLayout.LayoutFlags="PositionProportional"/>
+
+            <BoxView Color="#252525"
+                AbsoluteLayout.LayoutBounds="0.5,0.83,100,20"
+                AbsoluteLayout.LayoutFlags="PositionProportional"/>
+            
+            <Label
+                Text="Sign In With"
+                TextColor="White"
+                FontSize="14"
+                FontFamily="Montserrat"
+                HorizontalTextAlignment="Center"
+                AbsoluteLayout.LayoutBounds="0.5,0.85,250,40"
+                AbsoluteLayout.LayoutFlags="PositionProportional"/>
+
+            <ImageButton Source="spotify_logo.png"
+                         x:Name="spotify_sign_in_btn"
+                         BackgroundColor="Transparent"
+                         AbsoluteLayout.LayoutBounds="0.5,0.9,100,50"
+                         AbsoluteLayout.LayoutFlags="PositionProportional"
+                         Clicked="spotify_sign_in_btn_Clicked"/>
+
+
+            <Label
+                Text="© 2023 Battlecry Games. All rights reserved."
+                TextColor="White"
+                FontSize="6"
+                FontFamily="Montserrat"
+                HorizontalTextAlignment="Center"
+                AbsoluteLayout.LayoutBounds="0.5,1.03,250,40"
+                AbsoluteLayout.LayoutFlags="PositionProportional"/>
+
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

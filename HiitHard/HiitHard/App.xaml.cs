@@ -1,4 +1,5 @@
-﻿using MediaManager;
+﻿using HiitHard.Pages.Login;
+using MediaManager;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -10,7 +11,7 @@ namespace HiitHard
         public App()
         {
             InitializeComponent();
-            MainPage = new NavigationPage(new MainPage());
+            MainPage = new NavigationPage(new Navigation.NavigationDetail());
         }
 
         protected override void OnStart()

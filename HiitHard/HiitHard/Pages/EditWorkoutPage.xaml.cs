@@ -1,4 +1,5 @@
 ﻿using HiitHard.Objects;
+using HiitHard.PopupPages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,23 +14,22 @@ namespace HiitHard.Pages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EditWorkoutPage : ContentPage
     {
+        private Workout myWorkout;
         public EditWorkoutPage(Workout workout)
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
+
+            myWorkout = workout;
 
             nameLabel.Text = workout.Name;
             typeLabel.Text = workout.Type;
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < workout.CircuitList.Count; i++)
             {
-                Exercise newExercise = new Exercise("test", 30, true);
-                //exerciseStack.Children.Add(newExercise);
+                AddCircuitUI newCircuitUI = new AddCircuitUI(workout.CircuitList[i], 0);
+                circuitStack.Children.Add(newCircuitUI);
             }
-        }
-
-        private void Button_Clicked(object sender, EventArgs e)
-        {
-
         }
     }
 }

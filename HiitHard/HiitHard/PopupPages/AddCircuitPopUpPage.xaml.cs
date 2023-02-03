@@ -102,6 +102,7 @@ namespace HiitHard.PopupPages
             int count = AddExerciseStack.Children.Count;
 
             AddExerciseStack.Children.Insert(count, newExercise);
+            newExercise.nameEntry.Focus();
         }
 
         private async void addCircuitButton_Clicked(object sender, EventArgs e)

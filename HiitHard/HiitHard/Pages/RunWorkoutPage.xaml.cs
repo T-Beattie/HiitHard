@@ -29,6 +29,10 @@ namespace HiitHard.Pages
         private bool isPaused = false;
         private int countdownSeconds;
 
+        private ExerciseFrameUI currentExerciseUI;
+
+        private bool isExercisesOpen = false;
+
         private List<Exercise> exerciseList;
         FullTrack currentTrack = new FullTrack();
 
@@ -44,7 +48,7 @@ namespace HiitHard.Pages
 
             myWorkout = workout;
             exerciseList = new List<Exercise>();
-                        
+
 
             exerciseList = myWorkout.GetFullExerciseList();
             maxExercises = exerciseList.Count;
@@ -63,9 +67,25 @@ namespace HiitHard.Pages
             exercise_count_label.Text = currentExercise.exerciseCount.ToString();
             nextExerciseLabel.Text = nextExercise.Name;
 
+            
+
             timer.initTimer(1000, timerElapsed, true);
 
             LoadPlaylists();
+
+            exercise_closed_stack.IsVisible = true;
+            exercise_open_scroll.IsVisible = false;
+
+
+            var tapGestureRecognizer = new TapGestureRecognizer();
+            tapGestureRecognizer.Tapped += (s, e) => {
+                DisplayExercises();
+            };
+            exercises_label.GestureRecognizers.Add(tapGestureRecognizer);
+            exercise_closed_stack.GestureRecognizers.Add(tapGestureRecognizer);
+
+            PopulateExerciseListUI();
+            SetActiveExerciseDisplay(0);
 
             //spotify_info.Text = track.Name;
             //spotify_info_artist.Text = track.Artists[0].Name;
@@ -78,11 +98,39 @@ namespace HiitHard.Pages
             });
         }
 
+        private void DisplayExercises()
+        {
+            if (isExercisesOpen)
+            {
+                exercise_closed_stack.IsVisible = false;
+                exercise_open_scroll.IsVisible = true;
+            }
+            else
+            {
+                exercise_closed_stack.IsVisible = true;
+                exercise_open_scroll.IsVisible = false;
+            }
+
+            isExercisesOpen = !isExercisesOpen;
+        }
+
+        private void SetActiveExerciseDisplay(int exerciseNumber)
+        {
+            if(currentExerciseUI != null)
+                currentExerciseUI.BackgroundColor = Color.FromHex("#212121");
+
+            currentExerciseUI = (ExerciseFrameUI)exercise_open_stack.Children[exerciseNumber];
+            if (exerciseNumber >= 0 && exerciseNumber <= maxExercises)
+            {
+                currentExerciseUI.BackgroundColor = Color.FromHex("#4A9C57");
+            }         
+        }
+
         private void timerElapsed(object sender, EventArgs e)
         {
 
             countdownSeconds--;
-                
+
             Console.WriteLine("Timer Elapsed - count " + countdownSeconds);
             exercise_progress_ring.Progress = GetProgress(countdownSeconds, currentExercise.Duration);
 
@@ -100,7 +148,7 @@ namespace HiitHard.Pages
 
             if (countdownSeconds == 9 && exerciseCount < maxExercises - 1)
             {
-                UpNextMessage(exerciseList[exerciseCount+1].Name);
+                UpNextMessage(exerciseList[exerciseCount + 1].Name);
             }
 
 
@@ -125,6 +173,14 @@ namespace HiitHard.Pages
                 }
 
             });
+        }
+
+        void PopulateExerciseListUI()
+        {
+            for (int i = 0; i < exerciseList.Count; i++)
+            {
+                exercise_open_stack.Children.Add(new ExerciseFrameUI(i + 1, exerciseList[i]));
+            }
         }
 
         async void ShowCompleteMessage()
@@ -161,21 +217,22 @@ namespace HiitHard.Pages
             {
                 timer.stopTimer();
                 GetCurrentTrack();
-            }            
+            }
         }
 
         int NextExercise()
         {
             exerciseCount++;
+            SetActiveExerciseDisplay(exerciseCount);
 
             currentExercise = exerciseList[exerciseCount];
-            
-            if(exerciseCount < maxExercises)
+
+            if (exerciseCount < maxExercises)
             {
                 exerciseName.Text = currentExercise.Name;
                 circuit_count_label.Text = currentExercise.circuitCount.ToString();
                 exercise_count_label.Text = currentExercise.exerciseCount.ToString();
-                if (exerciseCount < exerciseList.Count-1) { 
+                if (exerciseCount < exerciseList.Count - 1) {
 
                     var nextExercise = exerciseList[exerciseCount + 1];
                     nextExerciseLabel.Text = exerciseList[exerciseCount + 1].Name;
@@ -207,13 +264,13 @@ namespace HiitHard.Pages
             FullTrack track = await spotifyManager.GetCurrentlyPlaying();
 
 
-            if (track != null )
+            if (track != null)
             {
                 spotify_current_song.Text = track.Name;
                 spotify_current_artist.Text = track.Artists[0].Name;
                 backgroundImage.Source = track.Album.Images[0].Url;
             }
-            
+
         }
 
         private Frame CreatePlaylistButton(SimplePlaylist playlist)
@@ -238,8 +295,8 @@ namespace HiitHard.Pages
                 Text = playlist.Name,
                 FontFamily = "Montserrat",
                 TextColor = Color.White,
-                FontSize=8,
-                WidthRequest=50
+                FontSize = 8,
+                WidthRequest = 50
             };
             playlistName.Text = playlist.Name;
             AbsoluteLayout.SetLayoutBounds(playlistName, new Rectangle(0.5, 1, 1, 1));
@@ -252,8 +309,8 @@ namespace HiitHard.Pages
                     playlistImage,
                     playlistName
                 },
-                Padding=0,
-                Margin=0
+                Padding = 0,
+                Margin = 0
             };
 
             playlistFrame.Content = stack;
@@ -334,6 +391,68 @@ namespace HiitHard.Pages
         {
             spotifyManager.PlayNextTrack();
             GetCurrentTrack();
+        }
+    }
+
+
+    class ExerciseFrameUI : Frame
+    {
+
+        public ExerciseFrameUI(int number, Exercise exercise)
+        {
+            BackgroundColor = Color.FromHex("#212121");
+            Margin = new Thickness(0);
+            HeightRequest = 40;
+            Padding = 0;
+
+            Label numLabel = new Label()
+            {
+                Text = number.ToString() + ".",
+                FontSize = 14,
+                FontFamily = "Montserrat",
+                VerticalTextAlignment = TextAlignment.Center,
+                HorizontalTextAlignment = TextAlignment.Start,
+                TextColor = Color.White
+            };
+
+            Label nameLabel = new Label()
+            {
+                Text = exercise.Name,
+                FontSize = 14,
+                FontFamily = "Montserrat",
+                VerticalTextAlignment = TextAlignment.Center,
+                HorizontalTextAlignment = TextAlignment.Start,
+                HorizontalOptions = LayoutOptions.StartAndExpand,
+                TextColor = Color.White
+            };
+
+            Label durationLabel = new Label()
+            {
+                Text = exercise.Duration.ToString() + "s",
+                FontSize = 14,
+                FontFamily = "Montserrat",
+                VerticalTextAlignment = TextAlignment.Center,
+                HorizontalTextAlignment = TextAlignment.End,
+                TextColor = Color.White,
+                HorizontalOptions = LayoutOptions.EndAndExpand
+            };
+
+
+
+            StackLayout myStack = new StackLayout()
+            {
+                Orientation = StackOrientation.Horizontal,
+                Margin = 0,
+                Children =
+                {
+                    numLabel,
+                    nameLabel,
+                    durationLabel
+                },
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+            };
+
+            Content = myStack;
         }
     }
 

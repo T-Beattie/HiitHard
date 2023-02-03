@@ -23,9 +23,8 @@
         VerticalOptions="CenterAndExpand" 
         HorizontalOptions="CenterAndExpand" 
         Padding="10, 10, 10, 10">
-        <Frame BackgroundColor="#59EC8E" MinimumWidthRequest="1000" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Margin="5">
+        <Frame BackgroundColor="Transparent" MinimumWidthRequest="1000" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Margin="5">
             <StackLayout Margin="0" Spacing="0">
-                <Button Text="X" x:Name="closeBtn" Clicked="closeBtn_Clicked" HorizontalOptions="End" FontFamily="Montserrat" BackgroundColor="Transparent"/>
                 <WebView x:Name="authWebView" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="1000" WidthRequest="1000"/>
             </StackLayout>            
         </Frame>

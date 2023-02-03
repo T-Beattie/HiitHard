@@ -22,9 +22,11 @@ namespace HiitHard.Managers
         public string token;
         public string device_Id = "";
 
+        public PrivateUser userProfile;
+
         public SpotifyManager()
         {
-            Authenticate();
+            //Authenticate();
         }
 
         public async void Authenticate()
@@ -60,19 +62,22 @@ namespace HiitHard.Managers
 
             spotify = new SpotifyClient(tokenResponse.AccessToken);
 
-            var me = await spotify.UserProfile.Current();
-            Console.WriteLine($"Hello there {me.DisplayName}");
+            userProfile = await spotify.UserProfile.Current();
+            Console.WriteLine($"Hello there {userProfile.DisplayName}");
 
             token = tokenResponse.AccessToken;
             GetMyPlaylists();
             GetMyDeviceID();
             // do calls with Spotify and save token?
 
-           
+            MessagingCenter.Send<SpotifyManager>(this, "Authentication_Success");
+
+            
 
             await Navigation.PopPopupAsync();
 
         }
+
 
         public async void GetMyDeviceID()
         {

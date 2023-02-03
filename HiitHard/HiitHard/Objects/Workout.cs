@@ -145,14 +145,15 @@ namespace HiitHard.Objects
 
             BackgroundColor = Color.FromHex("#1B1B1B");
             Margin = new Thickness(0);
+            HasShadow = false;
 
             CreateUI();
 
-            /*var tapGestureRecognizer = new TapGestureRecognizer();
+            var tapGestureRecognizer = new TapGestureRecognizer();
             tapGestureRecognizer.Tapped += (s, e) => {
                 Navigation.PushAsync(new EditWorkoutPage(myWorkout));
             };
-            this.GestureRecognizers.Add(tapGestureRecognizer);*/
+            this.GestureRecognizers.Add(tapGestureRecognizer);
 
         }
 
@@ -167,11 +168,21 @@ namespace HiitHard.Objects
             }
 
             TimeSpan t = TimeSpan.FromSeconds(totalTimeSeconds);
-
-            string totalTime = string.Format("{0:D2}h:{1:D2}m:{2:D2}s",
+            string totalTime;
+            if(t.Hours == 0)
+            {
+                totalTime = string.Format("{0:D2}m {1:D2}s",
+                            t.Minutes,
+                            t.Seconds);
+            }
+            else
+            {
+                totalTime = string.Format("{0:D2}h {1:D2}m {2:D2}s",
                             t.Hours,
                             t.Minutes,
                             t.Seconds);
+            }
+            
 
             return totalTime;
         }
@@ -180,7 +191,7 @@ namespace HiitHard.Objects
         {
             AbsoluteLayout absoluteLayout = new AbsoluteLayout
             {
-                Margin = new Thickness(0),
+                Margin = new Thickness(0,-20,0,-15),
                 HeightRequest=120
             };
 
@@ -378,7 +389,8 @@ namespace HiitHard.Objects
         private async void RunWorkoutButton_Clicked(object sender, EventArgs e)
         {
             myWorkout.EnableWarmUp = warmupCheckbox.IsChecked;
-            await Navigation.PushAsync(new RunWorkoutPage(myWorkout));
+            //await Navigation.PushAsync(new RunWorkoutPage(myWorkout));
+            await Application.Current.MainPage.Navigation.PushModalAsync(new RunWorkoutPage(myWorkout));
         }
 
     }
