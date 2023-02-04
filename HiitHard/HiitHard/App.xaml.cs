@@ -11,7 +11,8 @@ namespace HiitHard
         public App()
         {
             InitializeComponent();
-            MainPage = new NavigationPage(new Navigation.NavigationDetail());
+            //MainPage = new NavigationPage(new Navigation.NavigationDetail());
+            MainPage = new NavigationPage(new LoginPage());
         }
 
         protected override void OnStart()

@@ -22,6 +22,7 @@ namespace HiitHard.Pages
     public partial class RunWorkoutPage : ContentPage
     {
         SpotifyManager spotifyManager = SpotifyManager.Instance();
+        SessionManager sessionManager = SessionManager.Instance();
         private Workout myWorkout;
         private Exercise currentExercise;
         private int exerciseCount;
@@ -185,6 +186,7 @@ namespace HiitHard.Pages
 
         async void ShowCompleteMessage()
         {
+            RecordSession();
             await Navigation.PushPopupAsync(new CompleteWorkoutPopupPage());
             await Task.Delay(1000);
             await TextToSpeech.SpeakAsync("Workout Completed");
@@ -392,6 +394,44 @@ namespace HiitHard.Pages
             spotifyManager.PlayNextTrack();
             GetCurrentTrack();
         }
+
+        private void RecordSession()
+        {
+            
+            Session newSession = new Session(DateTime.Now.ToShortDateString(), myWorkout.Name, WorkoutTimeTotal(), "");
+            sessionManager.AddSession(newSession);
+        }
+
+        string WorkoutTimeTotal()
+        {
+            int totalTimeSeconds = 0;
+
+            List<Exercise> fullExercises = myWorkout.GetFullExerciseList();
+            for (int i = 0; i < fullExercises.Count; i++)
+            {
+                totalTimeSeconds += fullExercises[i].Duration;
+            }
+
+            TimeSpan t = TimeSpan.FromSeconds(totalTimeSeconds);
+            string totalTime;
+            if (t.Hours == 0)
+            {
+                totalTime = string.Format("{0:D2}m {1:D2}s",
+                            t.Minutes,
+                            t.Seconds);
+            }
+            else
+            {
+                totalTime = string.Format("{0:D2}h {1:D2}m {2:D2}s",
+                            t.Hours,
+                            t.Minutes,
+                            t.Seconds);
+            }
+
+
+            return totalTime;
+        }
+
     }
 
 
@@ -454,6 +494,7 @@ namespace HiitHard.Pages
 
             Content = myStack;
         }
+
     }
 
 }

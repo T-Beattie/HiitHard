@@ -1,4 +1,5 @@
-﻿using PCLStorage;
+﻿using HiitHard.Managers;
+using PCLStorage;
 using Rg.Plugins.Popup.Extensions;
 using System;
 using System.Collections.Generic;
@@ -26,6 +27,7 @@ namespace HiitHard.PopupPages
             quoteLabel.Text = quote.Item1;
             authorLabel.Text = quote.Item2;
         }
+
 
         private void ReadMotivation()
         {

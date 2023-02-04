@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HiitHard.Navigation.NavigationDetail"
              xmlns:plugin="clr-namespace:Xamarin.Plugin.Calendar.Controls;assembly=Xamarin.Plugin.Calendar" 
+             xmlns:local="clr-namespace:HiitHard.ViewModels"
              xmlns:controls="clr-namespace:HiitHard.Controls"
              Title="Landing Page"
              BackgroundColor="#252525">
@@ -24,8 +25,20 @@
         <BoxView Color="Transparent" HeightRequest="5" HorizontalOptions="Center" WidthRequest="340"/>
         <BoxView Color="#B69213" HeightRequest="2" HorizontalOptions="Center" WidthRequest="340"/>
 
-        <Frame Margin="0,-60,0,-60" BackgroundColor="Transparent" >
-            <plugin:Calendar x:Name="calendar_tracker" Scale="0.75" FooterSectionVisible="False" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" MonthLabelColor="#B69213" ArrowsColor="#B69213" YearLabelColor="White" SelectedDayBackgroundColor="#B69213" TodayOutlineColor="#B69213">
+        <Frame Margin="0,-60,0, -30" BackgroundColor="Transparent" >
+            <plugin:Calendar 
+                x:Name="calendar_tracker" 
+                Scale="0.75" 
+                VerticalOptions="FillAndExpand" 
+                HorizontalOptions="FillAndExpand" 
+                MonthLabelColor="#B69213" 
+                ArrowsColor="#B69213" 
+                YearLabelColor="White" 
+                SelectedDayBackgroundColor="#B69213" 
+                TodayOutlineColor="#B69213"
+                EventIndicatorColor="#59EC8E"
+                EventIndicatorSelectedColor="White">
+                
                 <plugin:Calendar.HeaderSectionTemplate>
                     <controls:CalendarHeader />
                 </plugin:Calendar.HeaderSectionTemplate>
@@ -33,6 +46,32 @@
                 <plugin:Calendar.FooterSectionTemplate>
                     <controls:CalendarFooter />
                 </plugin:Calendar.FooterSectionTemplate>
+
+                <plugin:Calendar.EventTemplate>
+                    <DataTemplate>
+                        <StackLayout
+                    Padding="15,0,0,0"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand">
+                            <Label
+                        FontAttributes="Bold"
+                        FontSize="Medium"
+                        FontFamily="Montserrat"
+                        TextColor="#B69213"
+                        Text="{Binding Name}" />
+                            <Label
+                        FontSize="Small"
+                        FontFamily="Montserrat"
+                        LineBreakMode="WordWrap"
+                        Text="{Binding Description}" />
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding BindingContext.EventSelectedCommand, Source={x:Reference calendar}}" CommandParameter="{Binding .}" />
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                    </DataTemplate>
+                </plugin:Calendar.EventTemplate>
+
+
             </plugin:Calendar>
         </Frame>
        

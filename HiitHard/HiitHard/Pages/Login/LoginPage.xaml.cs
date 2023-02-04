@@ -51,7 +51,7 @@ namespace HiitHard.Pages.Login
                 {
                     //loading_overlay.CloseLoading();
                     await Navigation.PushModalAsync(new Navigation.Navigation());
-
+                    //await Navigation.PushModalAsync(new MainPage());
                 }
             }
         }

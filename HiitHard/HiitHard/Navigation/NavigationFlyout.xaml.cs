@@ -33,11 +33,11 @@ namespace HiitHard.Navigation
             {
                 MenuItems = new ObservableCollection<NavigationFlyoutMenuItem>(new[]
                 {
-                    new NavigationFlyoutMenuItem { Id = 0, Title = "Page 1" },
-                    new NavigationFlyoutMenuItem { Id = 1, Title = "Page 2" },
-                    new NavigationFlyoutMenuItem { Id = 2, Title = "Page 3" },
-                    new NavigationFlyoutMenuItem { Id = 3, Title = "Page 4" },
-                    new NavigationFlyoutMenuItem { Id = 4, Title = "Page 5" },
+                    new NavigationFlyoutMenuItem { Id = 0, Title = "Home", TargetType = typeof(Navigation)},
+                    new NavigationFlyoutMenuItem { Id = 1, Title = "Workouts", TargetType = typeof(MainPage)},
+                    new NavigationFlyoutMenuItem { Id = 2, Title = "Playlists", TargetType = typeof(Navigation)},
+                    new NavigationFlyoutMenuItem { Id = 3, Title = "Settings", TargetType = typeof(Navigation)},
+                    new NavigationFlyoutMenuItem { Id = 4, Title = "Help", TargetType = typeof(Navigation)},
                 });
             }
 
