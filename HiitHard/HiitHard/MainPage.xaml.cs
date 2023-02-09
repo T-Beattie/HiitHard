@@ -19,7 +19,6 @@ namespace HiitHard
         public MainPage()
         {
             InitializeComponent();
-            NavigationPage.SetHasNavigationBar(this, false);
             workoutManager.LoadStash();
             Console.WriteLine("Id: " + CrossDeviceInfo.Current.Id);
 

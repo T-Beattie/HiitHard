@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HiitHard.Pages.PlaylistsPage"
+             BackgroundColor="#252525">
+
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Vertical" Spacing="0" Margin="0" TranslationX="-30">
+            <StackLayout HorizontalOptions="Center" VerticalOptions="Center"  Orientation="Horizontal">
+                <Image VerticalOptions="Center"  HorizontalOptions="Center" Source="headphones.png" HeightRequest="20" WidthRequest="20"/>
+                <Label Text="Playlists" FontFamily="Montserrat" FontSize="24" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" TextColor="White"/>
+            </StackLayout>
+            <BoxView HeightRequest="3" WidthRequest="250" Color="Transparent" HorizontalOptions="Center" />
+            <BoxView HeightRequest="1" WidthRequest="250" Color="#B69213" HorizontalOptions="Center" />
+        </StackLayout>
+    </NavigationPage.TitleView>
+
+    
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <StackLayout Grid.Row="0" VerticalOptions="StartAndExpand">
+                <ScrollView BackgroundColor="#1B1B1B" Margin="20,0,20,0"  VerticalOptions="StartAndExpand">
+                    <StackLayout x:Name="playlistStack" Orientation="Vertical" BackgroundColor="#1B1B1B" Padding="0" Margin="0,20,0,0"  VerticalOptions="StartAndExpand">
+
+                    </StackLayout>
+                </ScrollView>
+            </StackLayout>
+            <Button Grid.Row="0" Text="+" BorderWidth="1" FontFamily="Montserrat" FontSize="35" BackgroundColor="#B69213" BorderRadius="35" TextColor="White" HorizontalOptions="End" WidthRequest="70" HeightRequest="70" Margin="0,0,20,22" VerticalOptions="End" x:Name="AddPlaylist" Clicked="AddPlaylist_Clicked"/>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

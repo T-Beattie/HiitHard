@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HiitHard.Pages;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -33,11 +34,11 @@ namespace HiitHard.Navigation
             {
                 MenuItems = new ObservableCollection<NavigationFlyoutMenuItem>(new[]
                 {
-                    new NavigationFlyoutMenuItem { Id = 0, Title = "Home", TargetType = typeof(Navigation)},
-                    new NavigationFlyoutMenuItem { Id = 1, Title = "Workouts", TargetType = typeof(MainPage)},
-                    new NavigationFlyoutMenuItem { Id = 2, Title = "Playlists", TargetType = typeof(Navigation)},
-                    new NavigationFlyoutMenuItem { Id = 3, Title = "Settings", TargetType = typeof(Navigation)},
-                    new NavigationFlyoutMenuItem { Id = 4, Title = "Help", TargetType = typeof(Navigation)},
+                    new NavigationFlyoutMenuItem { Id = 0, Title = "Home", Img = "home.png" ,TargetType = typeof(NavigationDetail)},
+                    new NavigationFlyoutMenuItem { Id = 1, Title = "Workouts", Img = "dumbbell.png" ,TargetType = typeof(MainPage)},
+                    new NavigationFlyoutMenuItem { Id = 2, Title = "Playlists",  Img = "headphones.png" ,TargetType = typeof(PlaylistsPage)},
+                    new NavigationFlyoutMenuItem { Id = 3, Title = "Settings",  Img = "cog.png" ,TargetType = typeof(NavigationDetail)},
+                    new NavigationFlyoutMenuItem { Id = 4, Title = "Help",  Img = "help.png" ,TargetType = typeof(NavigationDetail)},
                 });
             }
 

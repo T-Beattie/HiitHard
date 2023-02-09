@@ -2,44 +2,52 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HiitHard.Navigation.NavigationFlyout"
-             Title="Flyout">
+             Title="Flyout"
+             BackgroundColor="#1B1B1B">
   <StackLayout>
     <ListView x:Name="MenuItemsListView"
               SeparatorVisibility="None"
               HasUnevenRows="true"
               ItemsSource="{Binding MenuItems}">
       <ListView.Header>
-        <Grid BackgroundColor="#03A9F4">
+          <Grid BackgroundColor="#1B1B1B">
           <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="10"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
           </Grid.ColumnDefinitions>
           <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="80"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="10"/>
+            <RowDefinition Height="15"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
           </Grid.RowDefinitions>
-          <Label
-              Grid.Column="1"
-              Grid.Row="2"
-              Text="AppName"
-              Style="{DynamicResource SubtitleStyle}"/>
-        </Grid>
+                    <Image Grid.Column="0" Grid.Row="1"  Grid.ColumnSpan="3" Grid.RowSpan="3" Source="spotify_logo.png" Aspect="AspectFit" HeightRequest="100"/>
+                    <Label Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="3" HorizontalOptions="Center" Text="Tom Beattie" FontSize="20" TextColor="White" FontFamily="Montserrat" Style="{DynamicResource SubtitleStyle}"/>
+                    <StackLayout Orientation="Horizontal" Grid.Column="0" Grid.Row="5" HorizontalOptions="Center" Grid.ColumnSpan="3" TranslationY="-40" >
+                        <Image Source="profile_edit.png" HeightRequest="10" WidthRequest="10" TranslationX="10"/>
+                        <Button TextColor="#787878" BackgroundColor="Transparent" Text="Edit Profile" HorizontalOptions="Center" FontSize="10" FontFamily="Montserrat" Style="{DynamicResource SubtitleStyle}"/>
+                    </StackLayout>
+                   
+                </Grid>
       </ListView.Header>
       <ListView.ItemTemplate>
         <DataTemplate>
           <ViewCell>
-            <StackLayout Padding="15,10" HorizontalOptions="FillAndExpand">
-              <Label VerticalOptions="FillAndExpand" 
-                    VerticalTextAlignment="Center" 
-                    Text="{Binding Title}" 
-                    FontSize="24"/>
-            </StackLayout>
-          </ViewCell>
+            <StackLayout Padding="0" Margin="15,15,15,0">
+                <StackLayout Padding="0,0" HorizontalOptions="FillAndExpand" Orientation="Horizontal" >
+                    <Image Source="{Binding Img}}" HeightRequest="20" WidthRequest="20"/>
+                    <BoxView Color="Transparent" WidthRequest="3"/>
+                    <Label VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" Text="{Binding Title}" FontSize="20" FontFamily="Montserrat" TextColor="White"/>
+                </StackLayout>
+                <BoxView Color="#B69213" HeightRequest="2" HorizontalOptions="FillAndExpand"/>
+            </StackLayout>            
+        </ViewCell>
         </DataTemplate>
       </ListView.ItemTemplate>
     </ListView>
-  </StackLayout>
+        <Button TextColor="White" BackgroundColor="#787878" WidthRequest="200" TranslationY="-30" Text="Logout" FontSize="14" HorizontalOptions="Center" FontFamily="Montserrat"/>
+    </StackLayout>
 </ContentPage>
