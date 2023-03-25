@@ -31,6 +31,7 @@
     <PackageReference Include="AWSSDK.DynamoDBv2" Version="3.7.101.32" />
     <PackageReference Include="Mobilist.AdvancedTimer.Forms.Plugin" Version="1.0.1" />
     <PackageReference Include="PCLStorage" Version="1.0.2" />
+    <PackageReference Include="Plugin.BLE" Version="2.1.3" />
     <PackageReference Include="Plugin.MediaManager" Version="1.1.1" />
     <PackageReference Include="Plugin.Toast" Version="2.2.0" />
     <PackageReference Include="Refractored.FloatingActionButtonForms" Version="2.1.0" />
@@ -41,8 +42,8 @@
     <PackageReference Include="Xam.Plugin.DeviceInfo" Version="4.1.1" />
     <PackageReference Include="Xam.Plugin.SimpleAudioPlayer" Version="1.6.0" />
     <PackageReference Include="Xam.Plugins.Forms.ProgressRing" Version="0.1.2" />
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2545" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.5" />
     <PackageReference Include="Xamarin.Plugin.Calendar" Version="2.0.9699" />
   </ItemGroup>
 

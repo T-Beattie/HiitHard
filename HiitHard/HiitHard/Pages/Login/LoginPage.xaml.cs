@@ -1,6 +1,9 @@
 ﻿using HiitHard.Managers;
 using HiitHard.Navigation;
 using HiitHard.Objects;
+using Plugin.BLE;
+using Plugin.BLE.Abstractions;
+using Plugin.BLE.Abstractions.Contracts;
 using Plugin.Connectivity;
 using System;
 using System.Collections.Generic;
@@ -11,6 +14,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Xamarin.Essentials;
 
 namespace HiitHard.Pages.Login
 {
@@ -21,10 +25,13 @@ namespace HiitHard.Pages.Login
         private DBUser db_user = new DBUser();
         private ProfileManager profile_manager = ProfileManager.Instance();
 
+
         public LoginPage()
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
+
+
         }
 
         protected override async void OnAppearing()
@@ -32,8 +39,16 @@ namespace HiitHard.Pages.Login
 
             if (profile_manager.user.email == null)
             {
-                AutoSigninAsync();
+              AutoSigninAsync();
             }
+
+            //00000000-0000-0000-0000-50c2edea5e61
+
+        }
+
+        private bool IsHeadset(IDevice device)
+        {
+            return device.Name.Contains("Headset") || device.Id.ToString().Contains("00001108");
         }
 
         async Task AutoSigninAsync()

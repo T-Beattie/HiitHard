@@ -56,30 +56,28 @@ namespace HiitHard.Pages
             var nameLabel = new Label()
             {
                 Text = Name,
+                FontSize = 12,
                 HorizontalOptions = LayoutOptions.StartAndExpand,
-                VerticalOptions = LayoutOptions.Center
+                VerticalOptions = LayoutOptions.Center,
+                TextColor = Color.White,
+                FontFamily = "Montserrat"
             };
 
-            var durationLabel = new Label()
+            var seperationBox = new BoxView()
             {
-                Text = TotalDuration.ToString() + " secs",
-                HorizontalOptions = LayoutOptions.CenterAndExpand,
-                VerticalOptions = LayoutOptions.Center
+                HeightRequest = 2,
+                WidthRequest = nameLabel.Width,
+                Color = Color.FromHex("#B69213")
             };
 
-            var enableCountdownCheck = new CheckBox()
-            {
-                HorizontalOptions = LayoutOptions.EndAndExpand
-            };
+           
 
             var layout = new StackLayout()
             {
-                Orientation = StackOrientation.Horizontal,
+                Orientation = StackOrientation.Vertical,
                 Children =
                 {
-                    nameLabel,
-                    durationLabel,
-                    enableCountdownCheck
+                    nameLabel,seperationBox,
                 }
             };
 

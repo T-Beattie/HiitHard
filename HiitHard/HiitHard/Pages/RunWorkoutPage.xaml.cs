@@ -95,7 +95,24 @@ namespace HiitHard.Pages
             MessagingCenter.Subscribe<Xamarin.Forms.Application>(Xamarin.Forms.Application.Current, "Notification", (sender) =>
             {
                 Console.WriteLine("Received Notification...");
-                startButton_Clicked(null, null);
+                //startButton_Clicked(null, null);
+            });
+
+            MessagingCenter.Subscribe<object, bool>(this, "musicActive", (sender, arg) =>
+            {
+
+                bool musicActive = arg;
+
+                if (!musicActive && isPaused)
+                {
+                    startButton_Clicked(null, null);
+
+                }
+                else if (musicActive && !isPaused)
+                {
+                    startButton_Clicked(null, null);
+                   
+                }
             });
         }
 
@@ -212,13 +229,17 @@ namespace HiitHard.Pages
 
             if (isPaused)
             {
+                
                 timer.startTimer();
                 GetCurrentTrack();
+                timeCounter.FontSize = 60;
             }
             else
             {
                 timer.stopTimer();
                 GetCurrentTrack();
+                timeCounter.Text = "PAUSED";
+                timeCounter.FontSize = 40;
             }
         }
 

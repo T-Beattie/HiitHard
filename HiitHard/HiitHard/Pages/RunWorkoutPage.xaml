@@ -24,7 +24,7 @@
                     <Grid WidthRequest="200" HeightRequest="200" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" >
                         <Image Aspect="AspectFill" Source="timerBackground.png" />
                         <control:ProgressRing  Grid.Column="0" Grid.Row="0" Progress="1.0" ScaleY="-1" Rotation="180" RingThickness="5" RingBaseColor="Transparent"  RingProgressColor="#B69213"  x:Name="exercise_progress_ring"></control:ProgressRing>
-                        <Label Grid.Column="0" Grid.Row="0" FontFamily="Montserrat" TextColor="White" FontSize="Header" Text="20" HorizontalOptions="Center" VerticalOptions="Center" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" x:Name="timeCounter" MinimumWidthRequest="75"></Label>
+                        <Label Grid.Column="0" Grid.Row="0" FontFamily="Montserrat" TextColor="White" FontSize="60" Text="20" HorizontalOptions="Center" VerticalOptions="Center" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" x:Name="timeCounter" MinimumWidthRequest="75"></Label>
                         <Button Grid.Column="0" Grid.Row="0" x:Name="startpauseButton"  BackgroundColor="Transparent" Clicked="startpauseButton_Clicked" HeightRequest="30" Scale="1" WidthRequest="150" HorizontalOptions="Center"/>
                     </Grid>
                     <StackLayout VerticalOptions="Center" HorizontalOptions="Start" TranslationX="-30">

@@ -10,12 +10,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin.Essentials;
+
 
 namespace HiitHard
 {
     public partial class MainPage : ContentPage
     {
         WorkoutManager workoutManager = WorkoutManager.Instance();
+
+
+
         public MainPage()
         {
             InitializeComponent();
